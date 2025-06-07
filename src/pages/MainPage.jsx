@@ -1,46 +1,70 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import mainImage from '../assets/mainpage.png';
 
+// ✅ 컴포넌트 바깥으로 옮긴 팁 리스트 (경고 제거)
+const tips = [
+  '부동산 매매계약서 작성 시 특약사항을 꼭 확인하세요.',
+  '전세 계약 시 전입신고와 확정일자를 반드시 받으세요.',
+  '재건축 아파트는 투자 전 조합 설립 여부를 확인하세요.',
+  '실거래가 조회는 국토교통부 실거래가 공개시스템을 활용하세요.',
+  '중개수수료는 거래금액에 따라 법정 요율이 정해져 있습니다.',
+  '등기부등본은 반드시 원본을 확인하고 말소기준등본 여부를 체크하세요.',
+  '소유권 이전 등기는 보통 잔금일에 처리합니다.',
+];
+
 function MainPage() {
+  const navigate = useNavigate();
+  const [randomTip, setRandomTip] = useState('');
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * tips.length);
+    setRandomTip(tips[randomIndex]);
+  }, []);
+
   return (
     <div className="relative w-full min-h-screen bg-white overflow-hidden">
-      {/* ✅ 흐릿한 배경 이미지: 사이드바 제외 전체 화면에 깔림 */}
       <img
-            src={mainImage}
-            alt="배경"
-            className="absolute top-1/2 left-[60%] -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] object-cover"
-          />
+        src={mainImage}
+        alt="배경"
+        className="absolute top-1/2 left-[60%] -translate-x-1/2 -translate-y-1/2 w-[80%] h-full object-cover pointer-events-none"
+      />
 
-      {/* ✅ 페이지 내용 */}
       <div className="relative z-10 flex px-8 pt-12 items-start">
-        {/* 사이드바 */}
         <Sidebar />
 
-        {/* ✅ 오른쪽 메인 콘텐츠 */}
         <main className="flex-1 relative flex justify-center items-start py-16">
           <div className="flex flex-col items-center space-y-6 w-full max-w-3xl">
-            {/* 상단 문구 */}
+            {/* 랜덤 부동산 지식 팝업 */}
             <h2 className="text-sm text-blue-600 bg-blue-100 px-4 py-2 rounded">
-              오늘의 부동산 관련 지식 한 줄 팝업
+              {randomTip}
             </h2>
 
             {/* 카드 리스트 */}
             {[
-              { title: '부동산 관련 정보 제공' },
-              { title: '부동산 관련 퀴즈' },
-              { title: '부동산 지원 정책' },
+              { title: '부동산 관련 정보 제공', path: '/info' },
+              { title: '부동산 관련 퀴즈', path: '/quiz' },
+              { title: '부동산 지원 정책', path: '/support' },
             ].map((item, idx) => (
               <div
                 key={idx}
                 className="w-full bg-white border border-blue-200 rounded-2xl shadow px-8 py-6 flex flex-col items-start gap-4 hover:shadow-lg transition"
->   
-  <span className="text-lg font-semibold text-gray-900">
-    {item.title}
-  </span>
-  <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">
-    바로가기
-  </button>
-</div>
+              >
+                <span className="text-lg font-semibold text-gray-900">
+                  {item.title}
+                </span>
+                <button
+                  onClick={() => handleNavigate(item.path)}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700"
+                >
+                  바로가기
+                </button>
+              </div>
             ))}
           </div>
         </main>
