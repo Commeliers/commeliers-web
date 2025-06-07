@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/commeliers-web/static/css/main.d23affee.css",
+    "main.js": "/commeliers-web/static/js/main.3eac9e6c.js",
+    "static/js/453.c812956c.chunk.js": "/commeliers-web/static/js/453.c812956c.chunk.js",
+    "static/media/startpage.png": "/commeliers-web/static/media/startpage.33acac00419a5b3ca574.png",
+    "static/media/mainpage.png": "/commeliers-web/static/media/mainpage.268594230481cd8e2e7e.png",
+    "index.html": "/commeliers-web/index.html",
+    "main.d23affee.css.map": "/commeliers-web/static/css/main.d23affee.css.map",
+    "main.3eac9e6c.js.map": "/commeliers-web/static/js/main.3eac9e6c.js.map",
+    "453.c812956c.chunk.js.map": "/commeliers-web/static/js/453.c812956c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d23affee.css",
+    "static/js/main.3eac9e6c.js"
+  ]
+}

@@ -15,7 +15,10 @@ function usePosts(selectedBoard, userEmail) {
 
   // .env에서 불러오는 API 주소
   const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+<<<<<<< HEAD
 
+=======
+>>>>>>> fcdd31f (🔧 프록시 설정 및 .env 수정)
   const showAlert = (message, type = 'info') => {
     setAlertModal({ visible: true, message, type });
     setTimeout(() => setAlertModal({ visible: false, message: '', type: 'info' }), 2000);

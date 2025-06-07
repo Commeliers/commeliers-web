@@ -2,9 +2,9 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
   app.use(
-    '/quiz',
+    '/api',
     createProxyMiddleware({
-      target: 'http://146.56.99.80:8080',
+      target: 'http://210.109.82.7:30770',
       changeOrigin: true,
     })
   );
